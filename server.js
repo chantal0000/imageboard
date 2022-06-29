@@ -1,11 +1,18 @@
-const express = require('express');
+const express = require("express");
 const app = express();
 
-app.use(express.static('./public'));
+app.use(express.static("./public"));
 
 app.use(express.json());
 
-app.get('*', (req, res) => {
+const db = require("./db");
+app.get("/images", (req, res) => {
+    db.getImages().then((results) => {
+        const getImagesResults = results.rows;
+        res.json(getImagesResults);
+    });
+});
+app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);
 });
 
