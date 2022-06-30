@@ -25,8 +25,8 @@ Vue.createApp({
     },
     methods: {
         // this is where we define all of OUR functions
-        myFirstFunction: function (images) {
-            console.log("myFirstFunction is running", images);
-        },
+        // myFirstFunction: function (images) {
+        //     console.log("myFirstFunction is running", images);
+        // },
     },
 }).mount("#main");

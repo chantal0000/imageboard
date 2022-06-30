@@ -8,7 +8,15 @@
 <body>
     <h1>My Imageboard</h1>
 <!-- this container is for our Vue Instance! -->
+
+    <form method="post" action="/upload">
+        <input name="title" type="title" placeholder="title">
+        <input name="user" type="user" placeholder="user">
+        <input name="image" type="file" accept="image/*">
+        <button>Submit</button>
+    </form>
     <div id="main">
+
         <!-- looping -->
         <h2>Images:</h2>
         <ul v-if="images.length">
