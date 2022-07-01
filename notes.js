@@ -35,4 +35,8 @@
 // </body>
 // </html>
 
-//______________________________________PART 2___________________________________________
+//______________________________________PART 3___________________________________________
+//componants
+// mini vue instance
+
+// html -> <first-component></first-component> -> you can name it anything, no camelCase in html

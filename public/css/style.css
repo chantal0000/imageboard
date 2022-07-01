@@ -6,6 +6,15 @@
 
 #main {
     text-align: center;
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.form {
+    border: black 5px solid;
 }
 
 #img {
@@ -14,15 +23,7 @@
     object-fit: cover;
 }
 
-ul {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-}
-
-li {
+.card {
     display: flex;
     flex-wrap: wrap;
     flex-direction: column;

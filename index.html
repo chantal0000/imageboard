@@ -9,23 +9,28 @@
     <h1>My Imageboard</h1>
 <!-- this container is for our Vue Instance! -->
 
-    <form method="post" action="/upload">
-        <input name="title" type="title" placeholder="title">
-        <input name="user" type="user" placeholder="user">
-        <input name="image" type="file" accept="image/*">
-        <button>Submit</button>
-    </form>
+   
     <div id="main">
-
+        <div class="form">
+        <form  @submit.prevent="handleSubmit">
+            <input v-model="title" name="title"  placeholder="title">
+            <input v-model="user" name="user"  placeholder="user">
+            <input v-model="description" name="description" placeholder="description">
+            <input @change="changeFile" name="image" type="file" accept="image/*">
+            <button>Submit</button>
+        </form>
+        </div>
         <!-- looping -->
-        <h2>Images:</h2>
-        <ul v-if="images.length">
-            <!-- v-bind:key refers to id in app.js object -->
-            <li v-for="image in images" v-bind:key="image.id" @click="myFirstFunction(image.url)">
+       
+        <div class ="card" v-if="images.length" v-for="image in images">
+            <!-- key so the correct img is loaded asap -->
+        <img  :key="image.id" id="img" :src="image.url" alt="images">  
+            <p>{{image.title}}</p>  
+        </div>
+       
     
-            <img id="img" :src="image.url" alt="images">    
-            </li>
-        </ul>
+            
+           
     </div>
 
 
