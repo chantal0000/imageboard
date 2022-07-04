@@ -1,21 +1,19 @@
 // this file will contain all of our Vue code!
 
 import * as Vue from "./vue.js";
-import firstComponent from "./first-component.js";
+import modal from "./modal.js";
 // createApp takes an object as argument
 // Vue code is connected to index.html #main is telling it where to look
 Vue.createApp({
     data() {
         return {
+            name: "images",
             images: [],
-            user: "",
-            title: "",
-            // visible: false,
-            image: null,
+            imageSelected: null,
         };
     }, // data ends
     components: {
-        firstComponent: firstComponent,
+        modal: modal,
     },
     // function that runs anytime.....
     mounted() {
@@ -30,17 +28,17 @@ Vue.createApp({
             });
     },
     methods: {
-        changeFile(e) {
-            this.image = e.target.files[0];
-            console.log(this.user);
+        setImageSelected(id) {
+            this.imageSelected = id;
+            console.log("id", id);
         },
+        close() {
+            this.imageSelected = null;
+        },
+
         handleSubmit(e) {
-            // e.preventDefault(); (if you don't use @submit.prevent)
             console.log("HANDLE SUBMIT");
             const formData = new FormData(e.target);
-
-            // formData.append("user", this.user);
-
             fetch("/upload", {
                 method: "POST",
                 body: formData,
@@ -49,16 +47,13 @@ Vue.createApp({
                     return results.json();
                 })
                 .then((data) => {
-                    this.images.unshift(data.payload[0]);
                     console.log(data);
+                    this.images.unshift(data.payload);
+                    console.log(this.images);
                 })
                 .catch((err) => {
                     console.log("err handleSubmit", err);
                 });
-            // .then((res) => res.json())
-            // .then((data) => {
-            //     console.log(data);
-            // });
         },
     },
 }).mount("#main");

@@ -40,3 +40,15 @@
 // mini vue instance
 
 // html -> <first-component></first-component> -> you can name it anything, no camelCase in html
+
+//______________________________________PART 4___________________________________________
+// pagination
+// we want a set of tweets/ info like 50 and then at the end again 50, not all of them because it would take to
+// render all of them
+
+// query part 1 select LIMIT 10 or any number you want
+// ANOTHER QUERY offset appraoch, count how many img on screen
+// OTHER APPROACH (if you want to use delete feature):
+//
+
+// COMMENTS: when modal opens you can add comments, comment &username

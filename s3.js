@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === "production") {
     secrets = require("./secrets.json");
 }
 
-console.log("secrets", secrets);
+// console.log("secrets", secrets);
 // below creates an instance of an AWS user -> it's an object that
 // gives us a bunchh of methods to communicate and interact
 // with our s3 cloud storage that amazon calls bucket

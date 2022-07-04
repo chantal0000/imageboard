@@ -10,7 +10,8 @@ console.log("[db] connecting to:", database);
 
 module.exports.getImages = () => {
     return db.query(`SELECT * FROM images
-    ORDER BY id DESC`);
+    ORDER BY id DESC
+    LIMIT 6`);
 };
 
 module.exports.uploadImage = (url, username, title, description) => {
@@ -20,3 +21,23 @@ RETURNING *`;
     const param = [url, username, title, description];
     return db.query(query, param);
 };
+
+module.exports.getImgById = (imgId) => {
+    const query = `SELECT * FROM images
+    WHERE id = $1`;
+    const param = [imgId];
+    return db.query(query, param);
+};
+
+///
+
+exports.getMoreImages = (lastId) =>
+    db
+        .query(
+            `SELECT * FROM images
+    WHERE id < $1
+    ORDER BY id DESC
+    LIMIT 10`,
+            [lastId]
+        )
+        .then(({ rows }) => rows);

@@ -8,15 +8,15 @@ const s3 = require("./s3");
 const path = require("path");
 //////////////////////////////////////////////////
 // const randomFileName = uidSafe(24).then(randomString);
+//MIDDLEWARE///
 app.use(express.static("./public"));
-
 app.use(express.json());
 // added middleware (part2)
 app.use(express.urlencoded({ extended: false }));
 // we need middleware because we use multipart/form-data in html
 // const uploader = multer({ dest: "uploads" });
 
-//////////////////////////////////////////////////
+//////////////////////GET IMAGES////////////////////////////
 app.get("/images", (req, res) => {
     db.getImages()
         .then((results) => {
@@ -28,6 +28,18 @@ app.get("/images", (req, res) => {
         });
 });
 //////////////////////////////////////////////////
+
+app.get("/img/:imgId", (req, res) => {
+    const id = req.params.imgId;
+    console.log("req.params", req.params);
+    console.log("req.params.id", req.params.imgId);
+    //  db.getImgById(req.params.id).then((results) => {
+    db.getImgById(id).then((results) => {
+        console.log("result after getImgWithId", results.rows[0]);
+        res.json(results.rows[0]);
+    });
+});
+
 const storage = multer.diskStorage({
     destination(req, file, callback) {
         callback(null, "uploads");
@@ -49,9 +61,10 @@ const upload = multer({
     storage,
     limits: { fileSize: 2097152 },
 });
+///////////////////////////////////////////////////
 
 //////////////////////////////////////////////////
-/// UNVOLLSTÄNDIG
+
 app.post("/upload", upload.single("image"), s3.upload, (req, res) => {
     console.log("in upload");
     console.log("req.body:", req.body);
@@ -65,9 +78,10 @@ app.post("/upload", upload.single("image"), s3.upload, (req, res) => {
             res.json({
                 // tempAnswer: true,
                 success: true,
-                payload: results.rows,
+                payload: results.rows[0],
             });
             //WHAT GOES IN HEERE?
+            console.log("payload", results.rows[0]);
         })
         .catch((err) => {
             console.log("error uploadng", err);
