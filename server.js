@@ -89,6 +89,25 @@ app.post("/upload", upload.single("image"), s3.upload, (req, res) => {
 });
 
 //////////////////////////////////////////////////
+app.get("/loadImages/:id", (req, res) => {
+    db.getMoreImages(req.params.id)
+        .then((result) => {
+            // console.log(result.rows);
+            res.json(result.rows);
+        })
+        .catch((err) => {
+            console.log("err", err);
+        });
+});
+app.get("/lowestId", (req, res) => {
+    db.getMoreImages()
+        .then((result) => {
+            res.json(result.rows);
+        })
+        .catch((err) => {
+            console.log("err", err);
+        });
+});
 
 app.get("*", (req, res) => {
     res.sendFile(`${__dirname}/index.html`);

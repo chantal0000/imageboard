@@ -5,12 +5,19 @@
     <title>Image Board</title>
     <link rel="stylesheet" href="/css/style.css">
 </head>
-<body>
-    <h1>My Imageboard</h1>
+    <div id="top">
+    <h5>waves of emotions</h5>
+    <h5>waves of emotions</h5>
+    </div>
+
 <!-- this container is for our Vue Instance! -->
+<!-- background -->
+
+
 
    
     <div id="main">
+
 
 
        <modal v-if="imageSelected" v-bind:selected-img="imageSelected" @close="close"></modal>
@@ -19,21 +26,23 @@
             <input name="title"  placeholder="title">
             <input name="user"  placeholder="user">
             <input name="description" placeholder="description">
-            <input name="image" type="file" accept="image/*">
-            <button>Submit</button>
+            <input id="upload-img" name="image" type="file" accept="image/*">
+            <button>submit</button>
+        
         </form>
         
         <!-- looping -->
-       
+       <div id="layout">
         <div class ="card" v-if="images.length" v-for="image in images">
             <!-- key so the correct img is loaded asap -->
         <img @click="setImageSelected(image.id)" :key="image.id" id="img" :src="image.url" alt="images">  
-            <p>{{image.title}}</p>  
+        <div class="image-title">    
+        <p>{{image.title}}</p>  
         </div>
-        <div>
-       <button id="more">more</button>
         </div>
-            
+        </div>
+       
+        <button v-if="smallestId !== firstPicture" @click="loadImages">more</button>
            
     </div>
 

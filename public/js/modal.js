@@ -30,14 +30,15 @@ const modal = {
 
     template: `
     <div id="pop-up">
-        <button id="button-close" @click="close">X</button>
-        <h3>{{img.title}}</h3>
-        <h3>{{img.username}}</h3>
-        <h3>{{img.description}}</h3>
-        
-        <h3>{{img.selectedImg}}</h3>
+        <button id="button-close" @click="close"></button>
+       <div id="box-right">
+        <h3>title: {{img.title}}</h3>
+        <h3>user: {{img.username}}</h3>
+        <h3>description: {{img.description}}</h3>
+       </div> 
+       <div id="box-left"> 
         <img id="selectedImg" v-bind:src="img.url">
-       
+       </div> 
 
     </div>
       `,

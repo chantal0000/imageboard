@@ -52,3 +52,9 @@
 //
 
 // COMMENTS: when modal opens you can add comments, comment &username
+
+//PART 5
+// client side routing
+// history.pushState({}, "", "/11") -> localhost:8080/11
+// location.pathname.slice(1) -> would give me only the 11 without /
+// push the id of the img the user just clicked on

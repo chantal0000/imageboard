@@ -10,13 +10,19 @@ Vue.createApp({
             name: "images",
             images: [],
             imageSelected: null,
+            smallestId: null,
+            firstPicture: null,
         };
     }, // data ends
     components: {
         modal: modal,
     },
-    // function that runs anytime.....
     mounted() {
+        fetch("/lowestId")
+            .then((resp) => resp.json())
+            .then((data) => {
+                this.firstPicture = data[0].id;
+            });
         //location to ask/check if any img should be retrieved in our database
         //use fetch here
         console.log("my vue app has mounted");
@@ -25,6 +31,7 @@ Vue.createApp({
             .then((data) => {
                 console.log("response from images:", data);
                 this.images = data;
+                this.smallestId = this.images[this.images.length - 1].id;
             });
     },
     methods: {
@@ -53,6 +60,23 @@ Vue.createApp({
                 })
                 .catch((err) => {
                     console.log("err handleSubmit", err);
+                });
+        },
+
+        loadImages() {
+            fetch("/loadImages/" + this.smallestId)
+                .then((result) => {
+                    return result.json();
+                })
+                .then((data) => {
+                    // console.log(data);
+                    data.forEach((element) => {
+                        this.images.push(element);
+                    });
+                    this.smallestId = this.images[this.images.length - 1].id;
+                })
+                .catch((err) => {
+                    console.log("err in loadImages app.js", err);
                 });
         },
     },

@@ -1,47 +1,401 @@
 * {
-    background-color: antiquewhite;
-    font-family: Georgia, "Times New Roman", Times, serif;
+    box-sizing: border-box;
     margin: 0;
+    padding: 0;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    color: #111;
+    font-size: 30px;
+    font-weight: 300;
+    line-height: 32px;
+    margin: 0 0 72px;
+    text-align: center;
+    background-color: #c5d6d8;
 }
 
 #main {
-    text-align: center;
+    margin: 0 auto;
+    max-width: 1200px;
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
+    /* flex-flow: row wrap; */
+    flex-direction: column;
+    justify-content: center;
+    padding: 0.5rem;
 }
 
 form {
-    border: black 5px solid;
     display: flex;
     flex-wrap: wrap;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     justify-content: center;
-    border: 5px blueviolet solid;
     width: 100%;
 }
 
 #img {
-    width: 300px;
+    width: 100%;
     height: 300px;
     object-fit: cover;
+    align-items: center;
 }
 
 .card {
-    display: flex;
+    /* 
     flex-wrap: wrap;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    border: 5px blueviolet solid;
+    border: 5px blueviolet solid; */
+    margin: 0.5rem;
+
+    overflow: hidden;
+    border-radius: 0.5rem;
+    flex: 1;
+    min-width: 290px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
 }
 
 #pop-up {
-    border: 5px black solid;
     z-index: 1;
     position: fixed;
-    top: 40px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    max-width: 100%;
+    width: 100%;
+    height: 400px;
+    max-height: 100%;
+    overflow: hidden;
+    background: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    flex-wrap: wrap;
+    display: flex;
+    flex-direction: row-reverse;
+    align-items: center;
+}
+
+#selectedImg {
+    height: 350px;
+    width: 500px;
+    object-fit: cover;
+    border-radius: 0.5rem;
+}
+
+#button-close {
+    text-decoration: none;
+    font-size: 0.875rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    display: inline-block;
+    border-radius: 1.5rem;
+    background-color: #3b7080;
+    padding: 1rem 2rem;
+    height: 40px;
+    width: 40px;
+}
+
+#box-left {
+    width: 37%;
+}
+#box-right {
+    width: 40%;
+    text-align: left;
+    padding: 20px;
+}
+
+input {
+    /* background: rgb(238, 174, 202);
+    background: radial-gradient(
+        circle,
+        rgba(238, 174, 202, 1) 0%,
+        rgba(148, 187, 233, 1) 100%
+    ); */
+    /* border-radius: 0.4rem;
+    transition: box-shadow var(--transitionDuration);
+    height: 50px;
+
+    border: none;
+    margin: 30px;
+    background-color: transparent; */
+    color: #333;
+    font-size: 1.2rem;
+    margin: 0 auto;
+    padding: 1.5rem 2rem;
+    border-radius: 0.2rem;
+    background-color: rgb(255, 255, 255);
+    border: none;
+    /* display: block; */
+    border-bottom: 0.3rem solid transparent;
+    transition: all 0.3s;
+}
+h1 {
+    color: rgb(238, 174, 202);
+
+    font-size: 100px;
+    font-weight: bold;
+    letter-spacing: -1px;
+    line-height: 1;
+    text-align: center;
+}
+
+input::placeholder {
+    font-weight: bold;
+    opacity: 0.5;
+    color: #3b7080;
+    text-align: center;
+
+    font-size: 14px;
+    line-height: 24px;
+    margin: 0 0 24px;
+}
+
+#more {
+    /* position: relative;
+    bottom: 0px; */
+    justify-content: space-between;
+    /* flex-direction: column; */
+    height: 100vh;
+    display: flex;
+}
+
+#more-button {
+    justify-content: flex-end;
+    display: flex;
+}
+
+#layout {
+    margin: 0.5rem;
+    overflow: hidden;
+    border-radius: 0.5rem;
+    flex: 1;
+    min-width: 290px;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.5);
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+#top {
+    display: flex;
+    /* flex-direction: row; */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 150px;
+}
+
+/* Giving 1st child(first text in body) 
+        basic transparent color and border */
+h5:nth-child(1) {
+    color: transparent;
+    -webkit-text-stroke: 1px #3b7080;
+}
+
+/* Giving 2nd child(second text in body) 
+        green colour along with animation property */
+h5:nth-child(2) {
+    color: #3b7080;
+    animation: animate 7s ease-in-out infinite;
+}
+
+h5 {
+    /* top: 20%; */
+    text-transform: uppercase;
+    left: 30px;
+    position: absolute;
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    transform: translate(calc(50vw - 50%), -55%);
+    font-size: 3em;
+}
+
+/* giving animation to 2nd child using @keyframes
+        and making wave like path using clip-path property */
+@keyframes animate {
+    0%,
+    100% {
+        clip-path: polygon(
+            0 45%,
+            6% 38%,
+            20% 27%,
+            38% 24%,
+            40% 47%,
+            49% 64%,
+            51% 72%,
+            74% 78%,
+            79% 75%,
+            100% 67%,
+            100% 100%,
+            0 100%
+        );
+    }
+
+    50% {
+        clip-path: polygon(
+            0 59%,
+            5% 71%,
+            24% 86%,
+            34% 71%,
+            41% 64%,
+            41% 46%,
+            51% 35%,
+            74% 21%,
+            89% 35%,
+            100% 42%,
+            100% 100%,
+            0 100%
+        );
+    }
+}
+
+#upload-img {
+    background-color: transparent;
+}
+
+/* BUTTON */
+
+@import url("https://fonts.googleapis.com/css?family=Source+Code+Pro:200,900");
+
+:root {
+    --text-color: hsla(210, 50%, 85%, 1);
+    --shadow-color: hsla(210, 40%, 52%, 0.4);
+    --btn-color: #3b7080;
+    /* hsl(175, 59%, 23%); */
+    --bg-color: #141218;
+}
+
+button {
+    position: relative;
+    padding: 10px 20px;
+    border: none;
+    background: none;
+    cursor: pointer;
+
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 30px;
+    color: var(--text-color);
+
+    background-color: var(--btn-color);
+    box-shadow: var(--shadow-color) 2px 2px 22px;
+    border-radius: 4px;
+    z-index: 0;
+    overflow: hidden;
+}
+
+button:focus {
+    outline-color: transparent;
+    box-shadow: var(--btn-color) 2px 2px 22px;
+}
+
+.right::after,
+button::after {
+    content: var(--content);
+    display: block;
+    position: absolute;
+    white-space: nowrap;
+    padding: 40px 40px;
+    pointer-events: none;
+}
+
+button::after {
+    font-weight: 200;
+    top: -30px;
+    left: -20px;
+}
+
+.right,
+.left {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+}
+.right {
+    left: 66%;
+}
+.left {
+    right: 66%;
+}
+.right::after {
+    top: -30px;
+    left: calc(-66% - 20px);
+
+    background-color: var(--bg-color);
+    color: transparent;
+    transition: transform 0.4s ease-out;
+    transform: translate(0, -90%) rotate(0deg);
+}
+
+button:hover .right::after {
+    transform: translate(0, -47%) rotate(0deg);
+}
+
+button .right:hover::after {
+    transform: translate(0, -50%) rotate(-7deg);
+}
+
+button .left:hover ~ .right::after {
+    transform: translate(0, -50%) rotate(7deg);
+}
+
+/* bubbles */
+button::before {
+    content: "";
+    pointer-events: none;
+    opacity: 0.6;
+    background: radial-gradient(
+            circle at 20% 35%,
+            transparent 0,
+            transparent 2px,
+            var(--text-color) 3px,
+            var(--text-color) 4px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 75% 44%,
+            transparent 0,
+            transparent 2px,
+            var(--text-color) 3px,
+            var(--text-color) 4px,
+            transparent 4px
+        ),
+        radial-gradient(
+            circle at 46% 52%,
+            transparent 0,
+            transparent 4px,
+            var(--text-color) 5px,
+            var(--text-color) 6px,
+            transparent 6px
+        );
+
+    width: 100%;
+    height: 300%;
+    top: 0;
+    left: 0;
+    position: absolute;
+    animation: bubbles 5s linear infinite both;
+}
+
+@keyframes bubbles {
+    from {
+        transform: translate();
+    }
+    to {
+        transform: translate(0, -66.666%);
+    }
 }
