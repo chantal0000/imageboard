@@ -73,7 +73,7 @@ form {
     height: 400px;
     max-height: 100%;
     overflow: hidden;
-    background: rgba(0, 0, 0, 0.5);
+    background: rgba(0, 0, 0, 0.651);
     color: #fff;
     flex-wrap: wrap;
     display: flex;
@@ -93,12 +93,15 @@ form {
     font-size: 0.875rem;
     font-weight: 300;
     text-transform: uppercase;
-    display: inline-block;
+    /* display: inline-block; */
     border-radius: 1.5rem;
     background-color: #3b7080;
     padding: 1rem 2rem;
     height: 40px;
     width: 40px;
+    display: flex;
+    align-self: flex-start;
+    margin: 10px;
 }
 
 #box-left {
@@ -151,7 +154,7 @@ input::placeholder {
     color: #3b7080;
     text-align: center;
 
-    font-size: 14px;
+    font-size: 20px;
     line-height: 24px;
     margin: 0 0 24px;
 }
@@ -398,4 +401,11 @@ button::before {
     to {
         transform: translate(0, -66.666%);
     }
+}
+
+#image-title {
+    background-color: pink;
+    width: 100%;
+    height: 45px;
+    text-align: center;
 }
