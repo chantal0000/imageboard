@@ -105,10 +105,11 @@ form {
 }
 
 #box-left {
-    width: 37%;
+    width: 40%;
+    /* align-items: left; */
 }
 #box-right {
-    width: 40%;
+    width: 48%;
     text-align: left;
     padding: 20px;
 }
@@ -169,8 +170,9 @@ input::placeholder {
 }
 
 #more-button {
-    justify-content: flex-end;
-    display: flex;
+    width: 30%;
+    position: relative;
+    left: 36%;
 }
 
 #layout {
