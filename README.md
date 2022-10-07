@@ -7,3 +7,4 @@ Single page application - mood board - where people can upload images, choose a 
 
 
 
+![](https://github.com/chantal0000/imageboard/blob/main/images_github/view1.gif "view of website")
