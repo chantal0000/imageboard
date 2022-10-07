@@ -7,4 +7,4 @@ Single page application - mood board - where people can upload images, choose a 
 
 
 
-![caption](https://github.com/chantal0000/imageboard/blob/main/images_github/20221005_220802.mp4)
+![bild1](https://user-images.githubusercontent.com/101737467/194575986-15265034-c2a0-44f7-8f93-14b8b515c862.gif)
