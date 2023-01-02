@@ -2,7 +2,7 @@
 
 import * as Vue from "./vue.js";
 import modal from "./modal.js";
-// createApp takes an object as argument
+
 // Vue code is connected to index.html #main is telling it where to look
 Vue.createApp({
     data() {
@@ -13,7 +13,7 @@ Vue.createApp({
             smallestId: null,
             firstPicture: null,
         };
-    }, // data ends
+    }, // data end
     components: {
         modal: modal,
     },
@@ -54,9 +54,7 @@ Vue.createApp({
                     return results.json();
                 })
                 .then((data) => {
-                    console.log(data);
                     this.images.unshift(data.payload);
-                    console.log(this.images);
                 })
                 .catch((err) => {
                     console.log("err handleSubmit", err);

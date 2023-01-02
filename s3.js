@@ -4,13 +4,12 @@ let secrets;
 if (process.env.NODE_ENV === "production") {
     secrets = process.env;
 } else {
-    //this means we are running locally
+    //running locally
     secrets = require("./secrets.json");
 }
 
-// console.log("secrets", secrets);
 // below creates an instance of an AWS user -> it's an object that
-// gives us a bunchh of methods to communicate and interact
+// gives us a bunch of methods to communicate and interact
 // with our s3 cloud storage that amazon calls bucket
 const s3 = new aws.S3({
     accessKeyId: secrets.AWS_KEY,
@@ -25,7 +24,7 @@ module.exports.upload = (req, res, next) => {
     const { filename, mimetype, size, path } = req.file;
     const promise = s3
         .putObject({
-            Bucket: "spicedling", // if you are using own credentials this needs to be updated by your bucket name
+            Bucket: "spicedling",
             ACL: "public-read",
             Key: filename,
             Body: fs.createReadStream(path),
